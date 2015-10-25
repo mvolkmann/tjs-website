@@ -1,6 +1,6 @@
 body {
   font-family: sans-serif;
-  font-size: 18pt;
+  font-size: 14pt;
 }
 
 button {
@@ -34,6 +34,7 @@ header .title {
 nav {
   float: left;
   border: solid blue 1px;
+  border-radius: 10px;
   padding: 10px;
 }
 
@@ -57,8 +58,11 @@ section {
 }
 
 section button {
-  margin: 0 auto;
-  width: 100%;
+  margin: 0 auto 10px auto;
+}
+
+section .content {
+  padding: 0 10px;
 }
 
 section .heading {
@@ -75,4 +79,5 @@ section > div {
   border-radius: 10px;
   display: block;
   margin-bottom: 10px;
+  /*padding: 10px;*/
 }
