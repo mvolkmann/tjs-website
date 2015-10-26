@@ -1,6 +1,10 @@
 import 'whatwg-fetch';
 import React from 'react'; //eslint-disable-line
 import ReactDOM from 'react-dom';
+import {Button, Modal} from 'react-bootstrap';
+
+console.log('ReactDOM =', ReactDOM);
+
 
 /*
 fetch('/addressbook').
@@ -70,9 +74,7 @@ const Header = () => (
   <header>
     <div>
       <img src="images/monument.jpg" alt="subdivision monument"/>
-      <div>
-        <a href="login.html">Login</a>
-      </div>
+      <Login/>
     </div>
     <div>
       <div className="title">
@@ -93,12 +95,56 @@ const Header = () => (
 
 const Home = () => (
   <div>
-    <Header></Header>
-    <Nav></Nav>
-    <Body></Body>
-    <Footer></Footer>
+    <Header/>
+    <Nav/>
+    <Body/>
+    <Footer/>
   </div>
 );
+
+// Defining a stateless component this way
+// for components that have references to "this"
+// avoids ESLint no-invalid-this warning.
+//function Login() {
+const Login = React.createClass({
+
+  getInitialState() {
+    return {showModal: false};
+  },
+
+  close() {
+    this.setState({showModal: false});
+  },
+
+  open() {
+    console.log('open entered');
+    this.setState({showModal: true});
+  },
+
+  render() {
+    console.log('render entered');
+    return (
+      <div>
+        <Button bsStyle="default" bsSize="small"
+          onClick={this.open}>
+          Login...
+        </Button>
+
+        <Modal show={this.state.showModal} onHide={this.close}>
+          <Modal.Header closeButton>
+            <Modal.Title>Modal heading</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <h4>Modal body</h4>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={this.close}>Close</Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
+    );
+  }
+});
 
 const Nav = () => (
   <nav>

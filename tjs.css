@@ -81,3 +81,12 @@ section > div {
   margin-bottom: 10px;
   /*padding: 10px;*/
 }
+
+/* For react-bootstrap modals. */
+.modal-container {
+  position: relative;
+}
+.modal-container .modal,
+.modal-container .modal-backdrop {
+  position: absolute;
+}
